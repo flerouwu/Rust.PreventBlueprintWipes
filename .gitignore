@@ -1,0 +1,14 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+
+# JetBrains Editor Configs
+.idea/
+
+# Project References
+.references/
+
+# flerouwu: Development Server
+server/

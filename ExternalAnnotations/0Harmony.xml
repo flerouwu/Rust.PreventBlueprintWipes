@@ -1,0 +1,8 @@
+<assembly name="0Harmony">
+    <member name="T:HarmonyLib.HarmonyPatch">
+        <attribute ctor="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor" />
+        <attribute ctor="M:System.Runtime.InteropServices.ObsoleteAttribute.#ctor(System.String, System.Boolean)">
+            <argument>Use ProtobitRust.Patches.Patch instead.</argument>
+        </attribute>
+    </member>
+</assembly>

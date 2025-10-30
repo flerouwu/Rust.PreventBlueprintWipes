@@ -1,0 +1,46 @@
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: docker
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Download Project References
+        run: |
+          mkdir --parents /tmp/dependencies/
+
+          # Install dependencies via apt
+          #   curl: required by DepotDownloader installation
+          #   unzip: required by DepotDownloader installation
+          apt-get update
+          apt-get install --assume-yes curl unzip
+
+          # Install DepotDownloader
+          curl -JOL https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_3.4.0/DepotDownloader-linux-x64.zip
+          unzip DepotDownloader-linux-x64.zip -d /tmp/dependencies/DepotDownloader/
+          mv /tmp/dependencies/DepotDownloader/DepotDownloader /usr/local/bin/depotdownloader
+          chmod +x /usr/local/bin/depotdownloader
+
+          # Download References
+          ./download-references.sh
+
+      - name: Build Solution
+        run: |
+          dotnet build Rust.PreventBlueprintWipes.sln \
+            --configuration Release \
+            --disable-build-servers
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rust.PreventBlueprintWipes-Artifacts.zip
+          path: |
+            Rust.PreventBlueprintWipes/bin/Release/net48/

@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net4.8</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RustAssembliesPath>$(SolutionDir)/.references/RustDedicated_Data/Managed/</RustAssembliesPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Rust Assemblies -->
+        <Reference Include="$(RustAssembliesPath)/0Harmony.dll" />
+        <Reference Include="$(RustAssembliesPath)/Assembly-CSharp.dll" />
+        <Reference Include="$(RustAssembliesPath)/Facepunch.Sqlite.dll" />
+        <Reference Include="$(RustAssembliesPath)/Facepunch.System.dll" />
+        <Reference Include="$(RustAssembliesPath)/Rust.Harmony.dll" />
+        <Reference Include="$(RustAssembliesPath)/Rust.Global.dll" />
+        <Reference Include="$(RustAssembliesPath)/UnityEngine.CoreModule.dll" />
+
+        <!-- Nuget Packages -->
+        <PackageReference Include="Krafs.Publicizer" Version="2.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Publicize Include="Assembly-CSharp" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="src\Patches\Facepunch\Sqlite\" />
+    </ItemGroup>
+</Project>
