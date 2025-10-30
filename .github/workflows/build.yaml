@@ -15,19 +15,19 @@ jobs:
 
       - name: Download Project References
         run: |
-          mkdir --parents /tmp/dependencies/
+          sudo mkdir --parents /tmp/dependencies/
 
           # Install dependencies via apt
           #   curl: required by DepotDownloader installation
           #   unzip: required by DepotDownloader installation
-          apt-get update
-          apt-get install --assume-yes curl unzip
+          sudo apt-get update
+          sudo apt-get install --assume-yes curl unzip
 
           # Install DepotDownloader
-          curl -JOL https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_3.4.0/DepotDownloader-linux-x64.zip
-          unzip DepotDownloader-linux-x64.zip -d /tmp/dependencies/DepotDownloader/
-          mv /tmp/dependencies/DepotDownloader/DepotDownloader /usr/local/bin/depotdownloader
-          chmod +x /usr/local/bin/depotdownloader
+          sudo curl -JOL https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_3.4.0/DepotDownloader-linux-x64.zip
+          sudo unzip DepotDownloader-linux-x64.zip -d /tmp/dependencies/DepotDownloader/
+          sudo mv /tmp/dependencies/DepotDownloader/DepotDownloader /usr/local/bin/depotdownloader
+          sudo chmod +x /usr/local/bin/depotdownloader
 
           # Download References
           ./download-references.sh
