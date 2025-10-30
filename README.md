@@ -19,7 +19,7 @@ version increment (e.g. when setting your server game mode to Hardcore).
 
 > [!WARNING]
 > This mod does not automatically migrate your existing database file. You are
-> required to manually rename your existing `player.blueprints.<persistence>.db`
+> required to manually rename your existing `player.blueprints.*.db` (where `*` is a number)
 > database file to `player.blueprints.db`.
 
 1. Download `Rust.PreventBlueprintWipes.dll` from the [latest release](https://github.com/flerouwu/Rust.PreventBlueprintWipes/releases/latest),
